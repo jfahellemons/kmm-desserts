@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion(29)
+    compileSdkVersion(30)
     defaultConfig {
         applicationId = "com.example.justdesserts"
         minSdkVersion(AndroidSdk.min)
@@ -32,8 +32,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
@@ -43,8 +43,9 @@ android {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-        freeCompilerArgs = listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
+        jvmTarget = JavaVersion.VERSION_11.toString()
+        freeCompilerArgs = listOf(
+            "-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
             "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"
         )
     }
@@ -73,11 +74,9 @@ dependencies {
     implementation(Koin.androidViewModel)
     implementation(Koin.compose)
 
-
     testImplementation("junit:junit:4.13.1")
     testImplementation("androidx.test:core:1.3.0")
     testImplementation("org.robolectric:robolectric:4.4")
     androidTestImplementation("androidx.test:runner:1.3.0")
     implementation(project(":shared"))
-
 }

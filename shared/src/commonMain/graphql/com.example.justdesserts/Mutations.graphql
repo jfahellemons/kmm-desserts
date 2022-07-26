@@ -1,0 +1,57 @@
+mutation NewDessert($input: DessertInput!) {
+  createDessert(dessertInput: $input) {
+    id
+    name
+    description
+    imageUrl
+    userId
+  }
+}
+
+mutation UpdateDessert($id: String!, $input: DessertInput!) {
+  updateDessert(id: $id, dessertInput: $input) {
+    id
+    name
+    description
+    imageUrl
+    userId
+  }
+}
+
+mutation DeleteDessert($dessertId: String!) {
+  deleteDessert(dessertId: $dessertId)
+}
+
+mutation UpdateReview($reviewId:String!, $reviewInput: ReviewInput!) {
+  updateReview(reviewId:$reviewId, reviewInput:$reviewInput) {
+    id
+    text
+    rating
+    dessertId
+    userId
+  }
+}
+
+mutation DeleteReview($reviewId:String!) {
+  deleteReview(reviewId:$reviewId)
+}
+
+mutation SignIn($userInput:UserInput!) {
+  signIn(userInput:$userInput) {
+    token
+    user {
+      id
+      email
+    }
+  }
+}
+
+mutation SignUp($userInput:UserInput!) {
+  signUp(userInput:$userInput) {
+    token
+    user {
+      id
+      email
+    }
+  }
+}
